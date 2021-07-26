@@ -1,9 +1,3 @@
-map $http_upgrade $connection_upgrade {
-        default upgrade;
-        '' close;
-}
-
-#IN#
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -22,4 +16,10 @@ server {
                 proxy_set_header Connection $connection_upgrade;
         }
 }
-#OUT#
+
+#KEEP#
+
+map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+}
